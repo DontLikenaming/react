@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>My first html page</title>
+</head>
+<body>
+    <div id="app">
+        <p id="p1" style="color: red">Just React</p>
+        <p id="p2" style="color: green">2022</p>
+        <button onclick="changeContent()">Change Content</button>
+    </div>
+<script>
+    let count = 0;
+    function changeContent() {
+        const p1 = document.getElementById('p1');
+        const p2 = document.getElementById('p2');
+
+        if(count%2===0) {
+            p1.textContent = 'Welcome to Web';
+            p2.textContent = '1991';
+        } else {
+            p1.textContent = 'Just React';
+            p2.textContent = '2022';
+        }
+        ++count;
+    }
+</script>
+</body>
+</html>
