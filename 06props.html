@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>React's Props</title>
+</head>
+<body>
+<div id="root1"></div>
+<div id="root2"></div>
+<div id="root3"></div>
+<div id="root4"></div>
+<div id="root5"></div>
+<script src="js/vendor/react/react@16.14.dev.js"></script>
+<script src="js/vendor/react/react-dom@16.14.dev.js"></script>
+<script src="js/vendor/babel.min.js"></script>
+<script type="text/babel">
+    // props
+    // 외부에서 컴퍼넌트 내부에 전달하는 인수(argument)
+    // 전달하는 인수는 변수명 자체로 사용할 수 있고
+    // 인수가 여럿 인 경우, 단일 문자 하나로 받을 수도 있음.
+    // props를 컴퍼넌트 내부에서 출력할 때는
+    // {인수 이름} 또는 {p.인수 이름} 등의 형태로 사용됨.
+    // 만일, 기본 속성을 정의하려면 defaultProps 를 이용
+    const Hello1 = ({name}) => {
+        return <h1>hello, {name}</h1>;
+    }
+
+    const Hello2 = ({name, color}) => {
+        return <h1 style={{color:color}}>hello, {name}</h1>;
+    }
+
+    const Hello3 = (a) => {
+        return <h1 style={{color:a.color, fontStyle:a.style}}>hello, {a.name}</h1>;
+    }
+
+    Hello3.defaultProps = {
+        name : 'React Props',
+        color : 'gray',
+        style : 'normal'
+    };
+
+
+    ReactDOM.render(<Hello1 name ='World'/>,document.querySelector('#root1'));
+    ReactDOM.render(<Hello1 name ={<em>React</em>}/>,document.querySelector('#root2'));
+    ReactDOM.render(<Hello2 name ='React' color ='red'/>,document.querySelector('#root3'));
+    ReactDOM.render(<Hello3 name ='Express' color ='green' style='italic'/>,document.querySelector('#root4'));
+    ReactDOM.render(<Hello3/>,document.querySelector('#root5'));
+</script>
+</body>
+</html>
